@@ -1,11 +1,11 @@
-﻿@@ -0,0 +1,490 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head lang="en">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
 </head>
 <body>
 <!--分享开始 -->
@@ -40,7 +40,7 @@
 </div>
 <!--分享结束 -->
 <!--电话模态框-->
-<div class="modal" id="phoneM"><!--全屏-->
+<div class="modal fade" id="phoneM"><!--全屏-->
     <div class="modalDialog" id="con"><!--相对定位-->
         <div class="modalContent">
             <div class="modalHead">
@@ -62,7 +62,7 @@
     </div>
 </div>
 <!--参团模态框-->
-<div class="modal" id="joinM"><!--全屏-->
+<div class="modal  fade" id="joinM"><!--全屏-->
     <div class="modalDialog"><!--相对定位-->
         <div class="modalContent">
             <div class="modalHead">
@@ -130,7 +130,7 @@
                                                                                  height="30" border="0"></a>
 </div>
 
-<div id="zBtn" class="zBtn rotateB"><img src="img/zhuan.png" alt=""/></div>
+<div id="zBtn" data-toggle="modal" data-target="#joinM" class="zBtn rotateB"><img src="img/zhuan.png" alt=""  data-toggle="modal" data-target="#zBtnM"/></div>
 
 <div class="main">
 
@@ -166,7 +166,9 @@
             </p>
         </div>
     </div>
-
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+        开始演示模态框
+    </button>
     <div class="hongbao" id="bang">
         <div class="hbhead">
             <h2>领取红包排行榜</h2>
@@ -334,12 +336,34 @@
 </div>-->
 <div class="footer">
     <ul>
-        <li class="fBtn" id="callp"><a href="#"><img src="img/phone.png" alt=""/></a></li>
-        <li class="fBtn" id="share"><a href="#"><img src="img/分享.png" alt=""/></a></li>
+        <li class="fBtn" id="callp" data-toggle="modal" data-target="#phoneM"><a href="#"><img src="img/phone.png" alt=""/></a></li>
+        <li class="fBtn" id="share"  data-toggle="modal" data-target="#joinM"><a href="#"><img src="img/分享.png" alt=""/></a></li>
         <li class="fBtn" id="backm"><a href="#"><img src="img/返利.png" alt=""/></a></li>
         <li class="fBtn"><a href="#bang"><img src="img/paiming.png" alt=""/></a></li>
     </ul>
 </div>
+
+<!--bootmodal-star-->
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">模态框（Modal）标题</h4>
+            </div>
+            <div class="modal-body">按下 ESC 按钮退出。</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">提交更改</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<!--bootmodal-end-->
+
+
 <script src="js/jquery-1.11.3.js"></script>
 <!--滚动-->
 <script type="text/javascript">
@@ -404,12 +428,12 @@
 //    console.dir(Top);
     });
     $('#share').on('click', function () {
-        $('#shareM').css('display', 'block');
+//        $('#shareM').css('display', 'block');
         stop();
     });
     $('#zBtn').on('click', function () {
 //    $('#zBtnM').css('display', 'block');
-        $('#joinM').css('display', 'block');
+//        $('#joinM').css('display', 'block');
         stop();
         document.documentElement.style.marginTop=0;
     });
@@ -421,14 +445,14 @@
     $('.footer ul').on('click', 'li', function () {
 //  console.log(this.id==='callp');
         if (this.id === 'callp') {
-            $('#phoneM').css('display', 'block');
+//            $('#phoneM').css('display', 'block');
             stop();
         } else if (this.id === 'join') {
-            $('#joinM').css('display', 'block');
+//            $('#joinM').css('display', 'block');
             stop();
         }
     });
-    $(document).on('mousedown', function (e) {
+    $(document).on('click', function (e) {
         if ($(e.target).is($('.modal'))) {
             $(e.target).css('display', 'none');
 //    $('#phoneM').css('display','none');
@@ -487,5 +511,7 @@
     }
 
 </script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
